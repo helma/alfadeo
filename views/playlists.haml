@@ -1,0 +1,15 @@
+- @playlists.each do |playlist|
+  %h3
+    = playlist.title
+    
+  %img{:src => [playlist.artwork_url.sub(/large/,"crop"),], :alt => [playlist.title], :height => "200", :width => "200", :border=> "0"}
+    
+  %player
+    %object{:height => "200", :width => "60%", }
+      %param{:name => "movie", :value => "http://player.soundcloud.com/player.swf?url=#{URI.encode(playlist.permalink_url)}&amp" }
+      %param{:name => "allowscriptaccess", :value => "always"}
+      %embed{:allowscriptaccess => "always", :height => "200", :src => "http://player.soundcloud.com/player.swf?url=#{URI.encode(playlist.permalink_url)}&amp;show_comments=false&amp;auto_play=false&amp;show_playcount=false&amp;show_artwork=false&amp;color=000000", :type => "application/x-shockwave-flash", :width => "60%"}
+
+
+  .description
+    = playlist.description if playlist.description

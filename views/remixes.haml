@@ -1,0 +1,15 @@
+- @tracks.each do |track|
+  %h3
+    = track.title
+    
+  %img{:src => [track.artwork_url], :alt => [track.title], :height => "81", :width => "81", :border=> "0"}
+
+  %player
+    %object{:height => "81", :width => "80%", }
+      %param{:name => "movie", :value => "http://player.soundcloud.com/player.swf?url=#{URI.encode(track.permalink_url)}&amp" }
+      %param{:name => "allowscriptaccess", :value => "always"}
+      %embed{:allowscriptaccess => "always", :height => "81", :src => "http://player.soundcloud.com/player.swf?url=#{URI.encode(track.permalink_url)}&amp;show_comments=false&amp;auto_play=false&amp;show_playcount=false&amp;color=000000", :type => "application/x-shockwave-flash", :width => "80%"}
+
+    
+  .description
+    = track.description if track.description

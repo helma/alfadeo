@@ -1,0 +1,20 @@
+%h3 Dicrom - original
+
+<object height="81" width="95%"> <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F342675&amp;show_comments=false&amp;auto_play=false&amp;color=000000"></param> <param name="allowscriptaccess" value="always"></param> <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F342675&amp;show_comments=false&amp;auto_play=false&amp;color=000000" type="application/x-shockwave-flash" width="95%"></embed> </object>  
+
+%br
+%br
+
+- @playlists.each do |playlist|
+  %h3
+    = playlist.title     
+    
+  %player
+    %object{:height => "280", :width => "95%", }
+      %param{:name => "movie", :value => "http://player.soundcloud.com/player.swf?url=#{URI.encode(playlist.permalink_url)}&amp" }
+      %param{:name => "allowscriptaccess", :value => "always"}
+      %embed{:allowscriptaccess => "always", :height => "280", :src => "http://player.soundcloud.com/player.swf?url=#{URI.encode(playlist.permalink_url)}&amp;show_comments=false&amp;auto_play=false&amp;show_playcount=false&amp;show_artwork=true&amp;color=000000", :type => "application/x-shockwave-flash", :width => "95%"}
+
+
+  .description
+    = playlist.description if playlist.description

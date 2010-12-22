@@ -1,0 +1,41 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    %meta{"http-equiv" => "Content-Type", :content=>"text/html; charset=utf-8"}
+    %meta{:name => "robots", :content => "all"} 
+    %meta{:name => "description", :content => "Electronic Music"}
+    %link{:rel => "stylesheet", :href => "/css/sc-player-minimal.css", :type => "text/css"}
+    %link{:rel=>"stylesheet", :href=>"/style.css", :type => "text/css"} 
+    %title Alfadeo
+    
+    %body
+
+      %wrapper
+       
+        .headline
+        
+        .navi
+          %ul
+            %li{:class => ("selected" if /^\/$/ =~ request.path )}
+              %a{ :href => "/news" } News
+            %li{:class => ("selected" if /^\/$/ =~ request.path )}
+              %a{ :href => "/releases" } Releases
+            %li{:class => ("selected" if /^\/$/ =~ request.path )}
+              %a{ :href => "/dicrom" } Dicrom
+            %li{:class => ("selected" if /^\/$/ =~ request.path )}
+              %a{ :href => "/remixes" } Remixes
+            %li{:class => ("selected" if /^\/$/ =~ request.path )}
+              %a{ :href => "/about" } about
+          
+          .licence
+            %img{:src => "http://i.creativecommons.org/l/by-sa/3.0/88x31.png", :alt => "Creative Commons License"}  
+            
+        .contentwrapper
+                 
+          .content
+            = yield
+      
+        .footnote
+          This work is licensed under a 
+          %a{:href => "http://creativecommons.org/licenses/by-sa/3.0/"}Creative Commons Attribution-Share Alike 3.0 Unported License
+    
